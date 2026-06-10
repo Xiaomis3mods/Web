@@ -3,12 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LamilC - Expertos en Climatización</title>
+    <meta name="description" content="LamilC - Expertos en climatización y refrigeración en Cuba. Reparación, mantenimiento, montaje de aires acondicionados. Servicio profesional con garantía.">
+    <meta name="keywords" content="climatización, refrigeración, aire acondicionado, reparación AC, mantenimiento, montaje, Cuba, LamilC">
+    <meta name="author" content="LamilC">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lamilc.com/">
+    <meta property="og:title" content="LamilC - Expertos en Climatización">
+    <meta property="og:description" content="Soluciones profesionales en climatización y refrigeración. Tu confort es nuestra prioridad.">
+    <meta property="og:image" content="https://github.com/Xiaomis3mods/LamilC/blob/a5a7f45adb930d8f95b7afe6fff2a6c1c21c3038/Screenshot_20260610_170930_Instagram.jpg?raw=true">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://lamilc.com/">
+    <meta property="twitter:title" content="LamilC - Expertos en Climatización">
+    <meta property="twitter:description" content="Soluciones profesionales en climatización y refrigeración. Tu confort es nuestra prioridad.">
+    <meta property="twitter:image" content="https://github.com/Xiaomis3mods/LamilC/blob/a5a7f45adb930d8f95b7afe6fff2a6c1c21c3038/Screenshot_20260610_170930_Instagram.jpg?raw=true">
+
+    <title>LamilC - Expertos en Climatización y Refrigeración | Servicio Profesional</title>
+    
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
+    
+    <!-- Schema.org markup for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "LamilC",
+      "description": "Expertos en climatización y refrigeración",
+      "url": "https://lamilc.com",
+      "telephone": "+5354018202",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "CU"
+      },
+      "sameAs": [
+        "https://www.instagram.com/lamilc22/"
+      ]
+    }
+    </script>
+    
+    <style>        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -19,18 +58,80 @@
             line-height: 1.6;
             color: #333;
             background-color: #f4f4f4;
+            overflow-x: hidden;
         }
 
-        /* Estilos para el encabezado fijo */
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transition: all 0.6s ease-out;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        /* Header */
         header {
-            background-color: rgba(0, 0, 139, 0.85); /* Azul oscuro con transparencia */
+            background-color: rgba(0, 0, 139, 0.95);
             backdrop-filter: blur(10px);
-            padding: 1rem 0;
+            padding: 0.8rem 0;
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 0.5rem 0;
+            background-color: rgba(0, 0, 139, 0.98);
         }
 
         .container {
@@ -45,47 +146,82 @@
             justify-content: space-between;
             align-items: center;
         }
-
         .logo {
-            display: flex;            align-items: center;
+            display: flex;
+            align-items: center;
             gap: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         .logo-icon {
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: #fff;
         }
 
         .logo-text {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: #fff;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         .nav-links a {
             color: #fff;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #ffcc00;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
         .nav-links a:hover {
             color: #ffcc00;
         }
 
-        /* Estilos para la sección de inicio */
+        /* Menú móvil */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Hero */
         section[id="inicio"] {
-            padding: 100px 0 60px; /* Ajuste para compensar el header fijo */
-            min-height: 100vh;
+            padding: 80px 0 40px;
+            min-height: 85vh;
             display: flex;
             align-items: center;
             position: relative;
-            overflow: hidden; /* Evita desbordes si se usa una imagen de fondo grande */
+            overflow: hidden;
         }
 
         .hero {
@@ -96,9 +232,9 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: white;        }
+            color: white;
+        }
 
-        /* Imagen de fondo del hero */
         .hero::before {
             content: "";
             position: absolute;
@@ -107,159 +243,157 @@
             width: 100%;
             height: 100%;
             background-image: url('https://github.com/Xiaomis3mods/LamilC/blob/a5a7f45adb930d8f95b7afe6fff2a6c1c21c3038/Screenshot_20260610_170930_Instagram.jpg?raw=true');
-            background-size: cover;
-            background-position: center;
+            background-size: cover;            background-position: center;
             background-repeat: no-repeat;
             z-index: -1;
-            filter: brightness(0.7); /* Oscurece ligeramente la imagen para mejorar legibilidad del texto */
+            filter: brightness(0.7);
         }
 
         .hero-content {
             max-width: 800px;
             padding: 20px;
-            z-index: 1; /* Asegura que el contenido esté encima de la imagen */
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
         }
 
-        /* Eliminado el h1 con el eslogan */
-
         .hero p {
-            font-size: 1.8rem; /* Aumenté ligeramente el tamaño para que sea el elemento principal ahora */
-            margin-bottom: 2rem;
-            color: #fff; /* Color blanco para el texto */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra para mejor legibilidad */
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
 
         .btn {
             display: inline-block;
-            padding: 12px 30px;
-            /* background-color: #ffcc00; Color original amarillo */
-            color: #000; /* Color original del texto */
+            padding: 10px 25px;
+            color: #000;
             text-decoration: none;
             border-radius: 5px;
             font-weight: 500;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            font-size: 1rem;
-            margin: 0.5rem; /* Espaciado entre botones */
+            font-size: 0.95rem;
+            margin: 0.4rem;
         }
 
-        /* Nuevos estilos para botones azul y blanco */
-        .btn-hero-blue {            background-color: #00008B; /* Azul oscuro */
-            color: white; /* Blanco */
+        .btn-hero-blue {
+            background-color: #00008B;
+            color: white;
         }
 
         .btn-hero-blue:hover {
-             background-color: #000069; /* Azul más oscuro al pasar el mouse */
-             color: #e6e6e6; /* Gris claro al pasar el mouse */
+            background-color: #000069;
+            color: #e6e6e6;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 139, 0.4);
         }
 
         .btn-hero-white {
-            background-color: white; /* Blanco */
-            color: #00008B; /* Azul oscuro */
+            background-color: white;
+            color: #00008B;
         }
-
         .btn-hero-white:hover {
-             background-color: #f0f0f0; /* Gris muy claro al pasar el mouse */
-             color: #00005a; /* Azul más oscuro al pasar el mouse */
+            background-color: #f0f0f0;
+            color: #00005a;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.4);
         }
 
-        .btn-whatsapp {
-            /* background-color: #25D366; Color original de whatsapp */
-            /* color: white; Color original de whatsapp */
-            margin-right: 15px;
-        }
-
-        .btn-whatsapp:hover {
-            /* background-color: #128C7E; Hover original de whatsapp */
-        }
-
-        /* Estilos responsivos */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none; /* Oculta temporalmente en móviles */
-            }
-            .hero p {
-                font-size: 1.4rem; /* Reduce tamaño en pantallas pequeñas */
-            }
-            .btn {
-                padding: 10px 20px; /* Ajusta botones */
-                display: block; /* Muestra botones uno debajo del otro en móvil */
-                width: fit-content;
-                margin: 0.5rem auto; /* Centrado y espaciado */
-            }
-        }
-
-        /* Agrega estilos básicos para otras secciones aquí */
+        /* Secciones */
         section {
-            padding: 60px 0;
+            padding: 40px 0;
         }
+
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
         .section-title h2 {
-            font-size: 2.5rem;
-            color: #000;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .stat-item h3 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: #000;
             margin-bottom: 0.5rem;
         }
 
-        .stat-item p {
+        .section-title p {
             font-size: 1rem;
             color: #666;
         }
 
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .stat-item {
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-item h3 {
+            font-size: 2.2rem;
+            color: #000;
+            margin-bottom: 0.3rem;        }
+
+        .stat-item p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        /* Servicios */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
         }
 
         .service-card {
             background-color: white;
             border-radius: 10px;
-            padding: 2rem;
+            padding: 1.5rem;
             text-align: center;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
         .service-card i {
-            font-size: 3rem;            color: #00008B;
-            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            color: #00008B;
+            margin-bottom: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover i {
+            transform: scale(1.1);
         }
 
         .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
             color: #000;
         }
 
         .service-card p {
             color: #666;
+            font-size: 0.9rem;
         }
-
+        /* Instagram */
         .instagram-section {
             background-color: #fff;
-            padding: 4rem 0;
+            padding: 3rem 0;
         }
 
         .instagram-content {
@@ -270,413 +404,486 @@
             max-width: 100%;
             height: auto;
             border-radius: 10px;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
         }
 
+        .instagram-content img:hover {
+            transform: scale(1.02);
+        }
+
+        /* About */
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 2rem;
             align-items: center;
         }
 
         .about-text {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #666;
         }
 
         .features-list {
             list-style: none;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
         }
 
         .features-list li {
-            margin-bottom: 1rem;
-            display: flex;            align-items: center;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
         }
 
+        .features-list li:hover {
+            transform: translateX(5px);
+        }
         .features-list i {
             color: #00008B;
             margin-right: 10px;
         }
 
+        /* Why Us */
         .why-us-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.5rem;
         }
 
         .why-us-item {
             text-align: center;
-            padding: 1.5rem;
+            padding: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .why-us-item:hover {
+            transform: translateY(-5px);
+            background-color: rgba(0, 0, 139, 0.05);
+            border-radius: 10px;
         }
 
         .why-us-item i {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: #00008B;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .why-us-item:hover i {
+            transform: scale(1.15);
         }
 
         .why-us-item h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            margin-bottom: 0.4rem;
             color: #000;
         }
 
+        .why-us-item p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Contacto */
         .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* Dos columnas en desktop */
-            gap: 3rem;
+            display: grid;            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
         }
 
         .contact-info {
             display: grid;
-            grid-template-columns: 1fr; /* Una columna para info en desktop */
-            gap: 1.5rem;
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
         }
 
         .contact-method {
             display: flex;
             align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-method:hover {
+            transform: translateX(5px);
         }
 
         .contact-method i {
-            font-size: 1.5rem;            color: #00008B;
+            font-size: 1.3rem;
+            color: #00008B;
             margin-right: 15px;
-            width: 30px; /* Ancho fijo para iconos */
+            width: 30px;
         }
 
+        /* Footer */
         .footer {
             background-color: #00008B;
             color: white;
-            padding: 3rem 0 1rem;
+            padding: 2rem 0 1rem;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Columnas adaptables */
-            gap: 2rem;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .footer-column h3 {
             color: #ffcc00;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
         }
 
         .footer-column ul {
             list-style: none;
         }
-
         .footer-column ul li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
 
         .footer-column ul li a {
             color: #ccc;
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .footer-column ul li a:hover {
             color: #ffcc00;
+            padding-left: 5px;
         }
 
         .copyright {
             text-align: center;
             padding-top: 1rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #aaa;
         }
-        /* Formulario de contacto (ejemplo básico) */
+
+        /* Formulario */
         form {
             display: grid;
-            gap: 1rem;
+            gap: 0.8rem;
         }
 
         form input,
         form select,
         form textarea {
             width: 100%;
-            padding: 10px;
+            padding: 8px;
             border: 1px solid #ddd;
             border-radius: 5px;
             font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
         }
 
-        form textarea {
-            resize: vertical;
-            min-height: 120px;
+        form input:focus,
+        form select:focus,
+        form textarea:focus {
+            outline: none;
+            border-color: #00008B;
+            box-shadow: 0 0 5px rgba(0, 0, 139, 0.3);
         }
 
-        /* Ajustes para dispositivos móviles */
+        form textarea {            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Responsive */
         @media (max-width: 992px) {
-             .about-content,
-             .contact-grid {
-                grid-template-columns: 1fr; /* Una columna en pantallas medianas/grandes */
+            .about-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
             }
             .contact-info {
-                grid-template-columns: repeat(2, 1fr); /* Dos columnas para info en mobile */
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
-         @media (max-width: 768px) {
-            .hero p {
-                font-size: 1.1rem;
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 139, 0.98);
+                flex-direction: column;
+                padding: 1rem 0;
+                gap: 0;
             }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 0.8rem 1.5rem;
+                width: 100%;
+                text-align: center;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
             .stats,
             .services-grid,
             .why-us-grid,
-            .footer-content {
-                grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+            .footer-content {                grid-template-columns: 1fr;
             }
+
             .contact-info {
-                grid-template-columns: 1fr; /* Vuelve a una columna en móvil muy pequeño */
+                grid-template-columns: 1fr;
             }
-            .nav-links { /* Opcional: Menú hamburguesa en móvil */
-                 display: none; /* Se oculta inicialmente */
+
+            section[id="inicio"] {
+                padding: 70px 0 30px;
+                min-height: 70vh;
             }
-            .mobile-menu-btn { /* Botón para mostrar menú móvil (requiere JS para funcionalidad) */
-                 display: block;                 background: none;
-                 border: none;
-                 color: white;
-                 font-size: 1.5rem;
-                 cursor: pointer;
+
+            section {
+                padding: 30px 0;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
             }
         }
-
-
     </style>
 </head>
 <body>
 
-<header>
+<header id="header">
     <div class="container">
         <nav>
             <div class="logo">
                 <div class="logo-icon"><i class="fas fa-snowflake"></i></div>
                 <div class="logo-text">LamilC</div>
             </div>
-            <div class="nav-links">
+            <div class="nav-links" id="navLinks">
                 <a href="#inicio">Inicio</a>
                 <a href="#servicios">Servicios</a>
                 <a href="#instagram">Instagram</a>
                 <a href="#nosotros">Nosotros</a>
                 <a href="#contacto">Contactar</a>
             </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
         </nav>
     </div>
 </header>
 
-<section id="inicio">
-    <div class="hero">
-        <div class="hero-content">
-            <!-- Eslogan eliminado -->
-            <p>Tu confort es nuestra prioridad</p> <!-- Texto principal actualizado -->
-            <div style="margin-top: 2rem;">
-                <a href="https://wa.me/5354018202?text=Hola%20LamilC%2C%20me%20interesa%20conocer%20sus%20servicios" class="btn btn-hero-blue">📱 Escríbenos</a> <!-- Nuevo estilo -->
-                <a href="#servicios" class="btn btn-hero-white">Ver servicios</a> <!-- Nuevo estilo -->
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Resto del contenido de la página... -->
-
-<section id="stats" class="stats-section">
-    <div class="container">
-        <div class="stats">
-            <div class="stat-item">                <h3>500+</h3>
-                <p>Clientes Satisfechos</p>
-            </div>
-            <div class="stat-item">
-                <h3>8+</h3>
-                <p>Años de Experiencia</p>
-            </div>
-            <div class="stat-item">
-                <h3>6</h3>
-                <p>Servicios Especializados</p>
-            </div>
-            <div class="stat-item">
-                <h3>100%</h3>
-                <p>Garantía</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="servicios" class="services-section">
-    <div class="container">
-        <div class="section-title">
-            <h2>Nuestros Servicios</h2>
-            <p>Soluciones completas en climatización</p>
-            <p>Ofrecemos un servicio integral para mantener tus equipos de climatización funcionando al máximo rendimiento.</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <i class="fas fa-tools"></i>
-                <h3>Reparación</h3>
-                <p>Diagnosticamos y reparamos todo tipo de averías en equipos de climatización. Servicio rápido y profesional con garantía en cada trabajo.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-wrench"></i>
-                <h3>Mantenimiento</h3>
-                <p>Planes de mantenimiento preventivo y correctivo para alargar la vida útil de tus equipos y asegurar su óptimo funcionamiento.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-snowflake"></i>
-                <h3>Montaje</h3>
-                <p>Montaje profesional de equipos de aire acondicionado en hogares, oficinas y comercios. Instalación limpia y eficiente.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-wind"></i>
-                <h3>Carga de Gas</h3>
-                <p>Recarga de gas refrigerante con equipos de última tecnología. Utilizamos gases ecológicos de alta calidad para tu equipo.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-map-marker-alt"></i>
-                <h3>Cambio de Lugar</h3>                <p>Traslado y reinstalación de equipos de climatización a nuevas ubicaciones. Desmontaje seguro y montaje sin problemas.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-bolt"></i>
-                <h3>Instalación Eléctrica</h3>
-                <p>Instalaciones eléctricas especializadas para climatización. Circuitos dedicados, protecciones y conexiones seguras.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="instagram" class="instagram-section">
-    <div class="container">
-        <div class="section-title">
-            <h2>Síguenos en Instagram</h2>
-            <p>Conoce nuestros últimos trabajos y proyectos</p>
-        </div>
-        <div class="instagram-content">
-            <img src="https://raw.githubusercontent.com/Xiaomis3mods/Web/03ce81a84ad54811ac72715bedf2250ee9aac180/Screenshot_20260610_085849_Instagram.jpg" alt="Instagram Feed Preview">
-            <p><a href="https://www.instagram.com/lamilc22/" target="_blank">@lamilc22 - ¡Síguenos en Instagram!</a></p>
-            <a href="https://www.instagram.com/lamilc22/" class="btn btn-hero-blue">Ver más en Instagram</a> <!-- Ejemplo de botón azul -->
-        </div>
-    </div>
-</section>
-
-<section id="nosotros" class="about-section">
-    <div class="container">
-        <div class="section-title">
-            <h2>Sobre Nosotros</h2>
-            <p>LamilC: Tu aliado en climatización profesional</p>
-        </div>
-        <div class="about-content">
-            <div class="about-text">
-                <p>Somos una empresa especializada en soluciones de climatización con años de experiencia en el sector. Nuestro equipo de técnicos certificados garantiza un servicio de primera calidad, siempre priorizando la satisfacción del cliente.</p>
-                <ul class="features-list">
-                    <li><i class="fas fa-check-circle"></i> Técnicos Certificados</li>
-                    <li><i class="fas fa-tag"></i> Precios Competitivos</li>
-                    <li><i class="fas fa-shield-alt"></i> Garantía en Trabajos</li>
-                    <li><i class="fas fa-handshake"></i> Atención Personalizada</li>
-                </ul>
-                <a href="https://wa.me/5354018202?text=Hola%20LamilC%2C%20quiero%20más%20información" class="btn btn-hero-blue" style="margin-top: 1.5rem;">Contáctanos</a> <!-- Ejemplo de botón azul -->
-            </div>
-            <!-- Aquí puedes agregar una imagen de la empresa si lo deseas -->
-        </div>
-    </div>
-</section>
-
-<section id="why-us" class="why-us-section">
-    <div class="container">
-        <div class="section-title">            <h2>¿Por qué elegirnos?</h2>
-            <p>La confianza que mereces</p>
-            <p>Nos distinguimos por ofrecer un servicio excepcional con los más altos estándares de calidad.</p>
-        </div>
-        <div class="why-us-grid">
-            <div class="why-us-item">
-                <i class="fas fa-trophy"></i>
-                <h3>Garantía Total</h3>
-                <p>Todos nuestros trabajos cuentan con garantía. Tu tranquilidad es nuestra prioridad absoluta.</p>
-            </div>
-            <div class="why-us-item">
-                <i class="fas fa-bolt"></i>
-                <h3>Respuesta Inmediata</h3>
-                <p>Sabemos lo importante que es tu confort. Respondemos rápidamente a cada solicitud.</p>
-            </div>
-            <div class="why-us-item">
-                <i class="fas fa-dollar-sign"></i>
-                <h3>Precios Justos</h3>
-                <p>Ofrecemos tarifas competitivas sin comprometer la calidad del servicio ni los materiales.</p>
-            </div>
-            <div class="why-us-item">
-                <i class="fas fa-user-hard-hat"></i>
-                <h3>Profesionales</h3>
-                <p>Equipo de técnicos certificados con amplia experiencia en climatización.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="contacto" class="contact-section">
-    <div class="container">
-        <div class="section-title">
-            <h2>Contacto</h2>
-            <p>¿Listo para mejorar tu climatización?</p>
-            <p>Contáctanos por cualquiera de nuestros canales. Estamos disponibles para atenderte y brindarte la mejor solución para tus necesidades.</p>
-        </div>
-        <div class="contact-grid">
-            <div class="contact-info">
-                <div class="contact-method">
-                    <i class="fab fa-whatsapp"></i>
-                    <div>
-                        <h3>WhatsApp</h3>
-                        <a href="https://wa.me/5354018202" target="_blank">+53 54018202</a><br>
-                        <a href="https://wa.me/5354740778" target="_blank">+53 54740778</a>
-                    </div>
-                </div>
-                <div class="contact-method">
-                    <i class="fab fa-telegram"></i>
-                    <div>
-                        <h3>Telegram</h3>                        <a href="https://t.me/+5354018202" target="_blank">+53 54018202</a><br>
-                        <a href="https://t.me/+5354740778" target="_blank">+53 54740778</a>
-                    </div>
-                </div>
-                <div class="contact-method">
-                    <i class="far fa-envelope"></i>
-                    <div>
-                        <h3>Email</h3>
-                        <a href="mailto:pblancob92@gmail.com">pblancob92@gmail.com</a>
-                    </div>
-                </div>
-                <div class="contact-method">
-                    <i class="fab fa-instagram"></i>
-                    <div>
-                        <h3>Instagram</h3>
-                        <a href="https://www.instagram.com/lamilc22/" target="_blank">@lamilc22</a>
-                    </div>
+<main>
+    <section id="inicio">
+        <div class="hero">
+            <div class="hero-content">
+                <p>Tu confort es nuestra prioridad</p>                <div style="margin-top: 1.5rem;">
+                    <a href="https://wa.me/5354018202?text=Hola%20LamilC%2C%20me%20interesa%20conocer%20sus%20servicios" class="btn btn-hero-blue">📱 Escríbenos</a>
+                    <a href="#servicios" class="btn btn-hero-white">Ver servicios</a>
                 </div>
             </div>
-            <div>
-                <h3>Solicita tu presupuesto</h3>
-                <p>Completa el formulario y te contactaremos lo antes posible.</p>
-                <form action="#" method="POST"> <!-- Cambia la acción por tu endpoint de procesamiento -->
-                    <input type="text" name="nombre" placeholder="Nombre" required>
-                    <input type="tel" name="telefono" placeholder="Teléfono" required>
-                    <input type="email" name="email" placeholder="Email" required>
-                    <select name="servicio_interes" required>
-                        <option value="" disabled selected>Selecciona un servicio</option>
-                        <option value="reparacion">Reparación</option>
-                        <option value="mantenimiento">Mantenimiento</option>
-                        <option value="montaje">Montaje</option>
-                        <option value="carga_gas">Carga de Gas</option>
-                        <option value="cambio_lugar">Cambio de Lugar</option>
-                        <option value="instalacion_electrica">Instalación Eléctrica</option>
-                    </select>
-                    <textarea name="mensaje" placeholder="Mensaje"></textarea>
-                    <button type="submit" class="btn btn-hero-blue">Enviar Solicitud</button> <!-- Ejemplo de botón azul -->
-                </form>
+        </div>
+    </section>
+
+    <section id="stats" class="stats-section animate-on-scroll">
+        <div class="container">
+            <div class="stats">
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>Clientes Satisfechos</p>
+                </div>
+                <div class="stat-item">
+                    <h3>8+</h3>
+                    <p>Años de Experiencia</p>
+                </div>
+                <div class="stat-item">
+                    <h3>6</h3>
+                    <p>Servicios Especializados</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>Garantía</p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <section id="servicios" class="services-section animate-on-scroll">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Servicios</h2>
+                <p>Soluciones completas en climatización</p>
+                <p>Ofrecemos un servicio integral para mantener tus equipos de climatización funcionando al máximo rendimiento.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-tools"></i>
+                    <h3>Reparación</h3>
+                    <p>Diagnosticamos y reparamos todo tipo de averías en equipos de climatización. Servicio rápido y profesional con garantía en cada trabajo.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-wrench"></i>
+                    <h3>Mantenimiento</h3>
+                    <p>Planes de mantenimiento preventivo y correctivo para alargar la vida útil de tus equipos y asegurar su óptimo funcionamiento.</p>
+                </div>
+                <div class="service-card">                    <i class="fas fa-snowflake"></i>
+                    <h3>Montaje</h3>
+                    <p>Montaje profesional de equipos de aire acondicionado en hogares, oficinas y comercios. Instalación limpia y eficiente.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-wind"></i>
+                    <h3>Carga de Gas</h3>
+                    <p>Recarga de gas refrigerante con equipos de última tecnología. Utilizamos gases ecológicos de alta calidad para tu equipo.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Cambio de Lugar</h3>
+                    <p>Traslado y reinstalación de equipos de climatización a nuevas ubicaciones. Desmontaje seguro y montaje sin problemas.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Instalación Eléctrica</h3>
+                    <p>Instalaciones eléctricas especializadas para climatización. Circuitos dedicados, protecciones y conexiones seguras.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="instagram" class="instagram-section animate-on-scroll">
+        <div class="container">
+            <div class="section-title">
+                <h2>Síguenos en Instagram</h2>
+                <p>Conoce nuestros últimos trabajos y proyectos</p>
+            </div>
+            <div class="instagram-content">
+                <img src="https://raw.githubusercontent.com/Xiaomis3mods/Web/03ce81a84ad54811ac72715bedf2250ee9aac180/Screenshot_20260610_085849_Instagram.jpg" alt="Feed de Instagram de LamilC mostrando trabajos de climatización">
+                <p><a href="https://www.instagram.com/lamilc22/" target="_blank" rel="noopener noreferrer">@lamilc22 - ¡Síguenos en Instagram!</a></p>
+                <a href="https://www.instagram.com/lamilc22/" class="btn btn-hero-blue" target="_blank" rel="noopener noreferrer">Ver más en Instagram</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="nosotros" class="about-section animate-on-scroll">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sobre Nosotros</h2>
+                <p>LamilC: Tu aliado en climatización profesional</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Somos una empresa especializada en soluciones de climatización con años de experiencia en el sector. Nuestro equipo de técnicos certificados garantiza un servicio de primera calidad, siempre priorizando la satisfacción del cliente.</p>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check-circle"></i> Técnicos Certificados</li>
+                        <li><i class="fas fa-tag"></i> Precios Competitivos</li>
+                        <li><i class="fas fa-shield-alt"></i> Garantía en Trabajos</li>                        <li><i class="fas fa-handshake"></i> Atención Personalizada</li>
+                    </ul>
+                    <a href="https://wa.me/5354018202?text=Hola%20LamilC%2C%20quiero%20más%20información" class="btn btn-hero-blue" style="margin-top: 1rem;">Contáctanos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="why-us" class="why-us-section animate-on-scroll">
+        <div class="container">
+            <div class="section-title">
+                <h2>¿Por qué elegirnos?</h2>
+                <p>La confianza que mereces</p>
+                <p>Nos distinguimos por ofrecer un servicio excepcional con los más altos estándares de calidad.</p>
+            </div>
+            <div class="why-us-grid">
+                <div class="why-us-item">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Garantía Total</h3>
+                    <p>Todos nuestros trabajos cuentan con garantía. Tu tranquilidad es nuestra prioridad absoluta.</p>
+                </div>
+                <div class="why-us-item">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Respuesta Inmediata</h3>
+                    <p>Sabemos lo importante que es tu confort. Respondemos rápidamente a cada solicitud.</p>
+                </div>
+                <div class="why-us-item">
+                    <i class="fas fa-dollar-sign"></i>
+                    <h3>Precios Justos</h3>
+                    <p>Ofrecemos tarifas competitivas sin comprometer la calidad del servicio ni los materiales.</p>
+                </div>
+                <div class="why-us-item">
+                    <i class="fas fa-user-hard-hat"></i>
+                    <h3>Profesionales</h3>
+                    <p>Equipo de técnicos certificados con amplia experiencia en climatización.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact-section animate-on-scroll">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contacto</h2>
+                <p>¿Listo para mejorar tu climatización?</p>
+                <p>Contáctanos por cualquiera de nuestros canales. Estamos disponibles para atenderte y brindarte la mejor solución para tus necesidades.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-method">                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <h3>WhatsApp</h3>
+                            <a href="https://wa.me/5354018202" target="_blank" rel="noopener noreferrer">+53 54018202</a><br>
+                            <a href="https://wa.me/5354740778" target="_blank" rel="noopener noreferrer">+53 54740778</a>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fab fa-telegram"></i>
+                        <div>
+                            <h3>Telegram</h3>
+                            <a href="https://t.me/+5354018202" target="_blank" rel="noopener noreferrer">+53 54018202</a><br>
+                            <a href="https://t.me/+5354740778" target="_blank" rel="noopener noreferrer">+53 54740778</a>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <i class="far fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <a href="mailto:pblancob92@gmail.com">pblancob92@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fab fa-instagram"></i>
+                        <div>
+                            <h3>Instagram</h3>
+                            <a href="https://www.instagram.com/lamilc22/" target="_blank" rel="noopener noreferrer">@lamilc22</a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3>Solicita tu presupuesto</h3>
+                    <p>Completa el formulario y te contactaremos lo antes posible.</p>
+                    <form action="#" method="POST">
+                        <input type="text" name="nombre" placeholder="Nombre" required aria-label="Nombre">
+                        <input type="tel" name="telefono" placeholder="Teléfono" required aria-label="Teléfono">
+                        <input type="email" name="email" placeholder="Email" required aria-label="Email">
+                        <select name="servicio_interes" required aria-label="Servicio de interés">
+                            <option value="" disabled selected>Selecciona un servicio</option>
+                            <option value="reparacion">Reparación</option>
+                            <option value="mantenimiento">Mantenimiento</option>
+                            <option value="montaje">Montaje</option>
+                            <option value="carga_gas">Carga de Gas</option>
+                            <option value="cambio_lugar">Cambio de Lugar</option>
+                            <option value="instalacion_electrica">Instalación Eléctrica</option>
+                        </select>
+                        <textarea name="mensaje" placeholder="Mensaje" aria-label="Mensaje"></textarea>
+                        <button type="submit" class="btn btn-hero-blue">Enviar Solicitud</button>
+                    </form>
+                </div>            </div>
+        </div>
+    </section>
+</main>
 
 <footer class="footer">
     <div class="container">
@@ -684,7 +891,8 @@
             <div class="footer-column">
                 <h3>LamilC</h3>
                 <p>Soluciones profesionales en climatización. Tu confort es nuestra prioridad. Servicio garantizado y de calidad.</p>
-            </div>            <div class="footer-column">
+            </div>
+            <div class="footer-column">
                 <h3>Servicios</h3>
                 <ul>
                     <li><a href="#servicios">Reparación</a></li>
@@ -697,12 +905,12 @@
             <div class="footer-column">
                 <h3>Contacto</h3>
                 <ul>
-                    <li><a href="https://wa.me/5354018202"><i class="fab fa-whatsapp"></i> +53 54018202</a></li>
-                    <li><a href="https://wa.me/5354740778"><i class="fab fa-whatsapp"></i> +53 54740778</a></li>
-                    <li><a href="https://t.me/+5354018202"><i class="fab fa-telegram"></i> +53 54018202</a></li>
-                    <li><a href="https://t.me/+5354740778"><i class="fab fa-telegram"></i> +53 54740778</a></li>
+                    <li><a href="https://wa.me/5354018202" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> +53 54018202</a></li>
+                    <li><a href="https://wa.me/5354740778" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> +53 54740778</a></li>
+                    <li><a href="https://t.me/+5354018202" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i> +53 54018202</a></li>
+                    <li><a href="https://t.me/+5354740778" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i> +53 54740778</a></li>
                     <li><a href="mailto:pblancob92@gmail.com"><i class="far fa-envelope"></i> pblancob92@gmail.com</a></li>
-                    <li><a href="https://www.instagram.com/lamilc22/"><i class="fab fa-instagram"></i> @lamilc22</a></li>
+                    <li><a href="https://www.instagram.com/lamilc22/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i> @lamilc22</a></li>
                 </ul>
             </div>
         </div>
@@ -711,6 +919,88 @@
         </div>
     </div>
 </footer>
+
+<script>
+    // Menú móvil
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        const icon = mobileMenuBtn.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');    });
+
+    // Cerrar menú al hacer clic en un enlace
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.add('fa-bars');
+            icon.classList.remove('fa-times');
+        });
+    });
+
+    // Header con efecto al hacer scroll
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+    // Animaciones al hacer scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                
+                // Animar elementos hijos con delay
+                const children = entry.target.querySelectorAll('.stat-item, .service-card, .why-us-item');
+                children.forEach((child, index) => {
+                    setTimeout(() => {
+                        child.style.opacity = '0';
+                        child.style.transform = 'translateY(20px)';
+                        child.style.transition = 'all 0.5s ease';
+                        
+                        setTimeout(() => {
+                            child.style.opacity = '1';
+                            child.style.transform = 'translateY(0)';
+                        }, 50);
+                    }, index * 100);
+                });
+            }
+        });
+    }, observerOptions);
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        observer.observe(el);
+    });
+
+    // Smooth scroll para enlaces internos
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                const headerOffset = 80;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
