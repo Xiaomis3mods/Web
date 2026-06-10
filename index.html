@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LamilC - Expertos en Climatización</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;            color: white;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            font-size: 2.2rem;
+            animation: cool 3s ease-in-out infinite;
+        }
+
+        @keyframes cool {
+            0%, 100% { opacity: 1; transform: rotate(0deg); }
+            50% { opacity: 0.8; transform: rotate(10deg); }
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .logo-main {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo-tagline {
+            font-size: 0.7rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        #inicio {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: white;
+            color: #1e3c72;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 0.5rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .btn-primary {
+            background: #ff6b6b;
+            color: white;        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #1e3c72;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            color: #666;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1e3c72;
+        }
+
+        /* Instagram */
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            align-items: center;
+        }
+
+        .instagram-item {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .instagram-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .instagram-item:hover .instagram-image {
+            transform: scale(1.05);
+        }
+
+        .instagram-cta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: transform 0.3s;
+            min-height: 250px;
+        }
+
+        .instagram-cta:hover {
+            transform: translateY(-5px);
+        }
+
+        .instagram-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .instagram-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* About */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+        }
+
+        /* Why Choose Us */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .feature-card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 1rem;
+            color: #1e3c72;
+        }
+
+        .contact-card a {
+            display: block;
+            color: #2a5298;
+            text-decoration: none;
+            margin: 0.5rem 0;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #1e3c72;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2a5298;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e3c72;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            margin: 0.5rem 0;
+            opacity: 0.8;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .logo-main {
+                font-size: 1.4rem;
+            }
+
+            .logo-tagline {
+                font-size: 0.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="#inicio" class="logo">
+                <span class="logo-icon">❄️</span>
+                <div class="logo-text">
+                    <span class="logo-main">LamilC</span>
+                    <span class="logo-tagline">Climatización</span>
+                </div>
+            </a>
+            <ul class="nav-links">                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#instagram">Instagram</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contactar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="section">
+        <div class="container">
+            <h1 class="hero-title">Expertos en Climatización</h1>
+            <p class="hero-subtitle">Tu confort es nuestra prioridad</p>
+            <p class="hero-description">
+                En LamilC ofrecemos soluciones profesionales en climatización. Reparación, mantenimiento, instalación y más. Calidad garantizada para tu hogar y negocio.
+            </p>
+            <div>
+                <a href="https://wa.me/5354018202?text=Hola%20LamilC%2C%20me%20interesa%20conocer%20sus%20servicios" class="btn btn-primary">
+                    📱 Escríbenos
+                </a>
+                <a href="#servicios" class="btn">
+                    Ver servicios
+                </a>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Clientes Satisfechos</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">8+</span>
+                    <span class="stat-label">Años de Experiencia</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">6</span>
+                    <span class="stat-label">Servicios Especializados</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Garantía</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="section">
+        <div class="container">
+            <h2 class="section-title">Nuestros Servicios</h2>            <p class="section-subtitle">Soluciones completas en climatización</p>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 3rem; color: #666;">
+                Ofrecemos un servicio integral para mantener tus equipos de climatización funcionando al máximo rendimiento.
+            </p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3 class="service-title">Reparación</h3>
+                    <p>Diagnosticamos y reparamos todo tipo de averías en equipos de climatización. Servicio rápido y profesional con garantía en cada trabajo.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛠️</div>
+                    <h3 class="service-title">Mantenimiento</h3>
+                    <p>Planes de mantenimiento preventivo y correctivo para alargar la vida útil de tus equipos y asegurar su óptimo funcionamiento.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">❄️</div>
+                    <h3 class="service-title">Montaje</h3>
+                    <p>Montaje profesional de equipos de aire acondicionado en hogares, oficinas y comercios. Instalación limpia y eficiente.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💨</div>
+                    <h3 class="service-title">Carga de Gas</h3>
+                    <p>Recarga de gas refrigerante con equipos de última tecnología. Utilizamos gases ecológicos de alta calidad para tu equipo.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📍</div>
+                    <h3 class="service-title">Cambio de Lugar</h3>
+                    <p>Traslado y reinstalación de equipos de climatización a nuevas ubicaciones. Desmontaje seguro y montaje sin problemas.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3 class="service-title">Instalación Eléctrica</h3>
+                    <p>Instalaciones eléctricas especializadas para climatización. Circuitos dedicados, protecciones y conexiones seguras.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Section -->
+    <section id="instagram" class="section">
+        <div class="container">
+            <h2 class="section-title">Síguenos en Instagram</h2>
+            <p class="section-subtitle">Conoce nuestros últimos trabajos y proyectos</p>
+            <div class="instagram-grid">
+                <div class="instagram-item">
+                    <img src="https://raw.githubusercontent.com/Xiaomis3mods/Web/03ce81a84ad54811ac72715bedf2250ee9aac180/Screenshot_20260610_085849_Instagram.jpg" 
+                         alt="LamilC Instagram - Trabajos de climatización" 
+                         class="instagram-image">
+                </div>                <a href="https://www.instagram.com/lamilc22/" target="_blank" class="instagram-cta">
+                    <span class="instagram-icon">📷</span>
+                    <span class="instagram-text">@lamilc22 - ¡Síguenos en Instagram!</span>
+                </a>
+            </div>
+            <div class="text-center" style="margin-top: 2rem;">
+                <a href="https://www.instagram.com/lamilc22/" target="_blank" class="btn btn-primary">
+                    Ver más en Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="nosotros" class="section">
+        <div class="container">
+            <h2 class="section-title">Sobre Nosotros</h2>
+            <p class="section-subtitle">LamilC: Tu aliado en climatización profesional</p>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Somos una empresa especializada en soluciones de climatización con años de experiencia en el sector. 
+                        Nuestro equipo de técnicos certificados garantiza un servicio de primera calidad, siempre priorizando 
+                        la satisfacción del cliente.
+                    </p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <span class="feature-icon">✅</span>
+                            <span>Técnicos Certificados</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">💰</span>
+                            <span>Precios Competitivos</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🛡️</span>
+                            <span>Garantía en Trabajos</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🤝</span>
+                            <span>Atención Personalizada</span>
+                        </div>
+                    </div>
+                    <div style="margin-top: 2rem;">
+                        <a href="https://wa.me/5354018202?text=Hola%20LamilC%2C%20quiero%20más%20información" class="btn btn-primary">
+                            Contáctanos
+                        </a>
+                    </div>
+                </div>
+            </div>        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">¿Por qué elegirnos?</h2>
+            <p class="section-subtitle">La confianza que mereces</p>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 3rem; color: #666;">
+                Nos distinguimos por ofrecer un servicio excepcional con los más altos estándares de calidad.
+            </p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-card-icon">🏆</div>
+                    <h3>Garantía Total</h3>
+                    <p>Todos nuestros trabajos cuentan con garantía. Tu tranquilidad es nuestra prioridad absoluta.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card-icon">⚡</div>
+                    <h3>Respuesta Inmediata</h3>
+                    <p>Sabemos lo importante que es tu confort. Respondemos rápidamente a cada solicitud.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card-icon">💵</div>
+                    <h3>Precios Justos</h3>
+                    <p>Ofrecemos tarifas competitivas sin comprometer la calidad del servicio ni los materiales.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card-icon">👨‍🔧</div>
+                    <h3>Profesionales</h3>
+                    <p>Equipo de técnicos certificados con amplia experiencia en climatización.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="section">
+        <div class="container">
+            <h2 class="section-title">Contacto</h2>
+            <p class="section-subtitle">¿Listo para mejorar tu climatización?</p>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 3rem; color: #666;">
+                Contáctanos por cualquiera de nuestros canales. Estamos disponibles para atenderte y brindarte la mejor solución para tus necesidades.
+            </p>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📱</div>
+                    <h3>WhatsApp</h3>
+                    <a href="https://wa.me/5354018202">+53 54018202</a>
+                    <a href="https://wa.me/5354740778">+53 54740778</a>                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">✈️</div>
+                    <h3>Telegram</h3>
+                    <a href="https://t.me/+5354018202">+53 54018202</a>
+                    <a href="https://t.me/+5354740778">+53 54740778</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email</h3>
+                    <a href="mailto:pblancob92@gmail.com">pblancob92@gmail.com</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📷</div>
+                    <h3>Instagram</h3>
+                    <a href="https://www.instagram.com/lamilc22/">@lamilc22</a>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <h3 style="text-align: center; margin: 3rem 0 2rem; color: #1e3c72;">Solicita tu presupuesto</h3>
+            <p style="text-align: center; margin-bottom: 2rem; color: #666;">Completa el formulario y te contactaremos lo antes posible.</p>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="servicio">Servicio de interés</label>
+                    <select id="servicio" name="servicio" required>
+                        <option value="">Selecciona un servicio</option>
+                        <option value="reparacion">Reparación</option>
+                        <option value="mantenimiento">Mantenimiento</option>
+                        <option value="montaje">Montaje</option>
+                        <option value="carga-gas">Carga de Gas</option>
+                        <option value="cambio-lugar">Cambio de Lugar</option>
+                        <option value="instalacion-electrica">Instalación Eléctrica</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje"></textarea>                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; border: none; cursor: pointer;">
+                    Enviar Solicitud
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>LamilC</h3>
+                    <p>Soluciones profesionales en climatización. Tu confort es nuestra prioridad. Servicio garantizado y de calidad.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Servicios</h3>
+                    <a href="#servicios">Reparación</a>
+                    <a href="#servicios">Mantenimiento</a>
+                    <a href="#servicios">Montaje</a>
+                    <a href="#servicios">Carga de Gas</a>
+                    <a href="#servicios">Más Servicios</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <a href="https://wa.me/5354018202">📱 +53 54018202</a>
+                    <a href="https://wa.me/5354740778">📱 +53 54740778</a>
+                    <a href="https://t.me/+5354018202">✈️ +53 54018202</a>
+                    <a href="https://t.me/+5354740778">✈️ +53 54740778</a>
+                    <a href="mailto:pblancob92@gmail.com">📧 pblancob92@gmail.com</a>
+                    <a href="https://www.instagram.com/lamilc22/">📷 @lamilc22</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 LamilC. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
