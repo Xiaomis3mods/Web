@@ -42,7 +42,7 @@ border-radius:12px;
 box-shadow:0 3px 10px rgba(0,0,0,.1);
 }
 
-input,textarea{
+input,textarea,select{
 width:100%;
 padding:10px;
 margin:5px 0;
@@ -82,7 +82,7 @@ button:hover{background:#900;}
 <div id="map"></div>
 </div>
 
-<!-- FORMULARIO 100% MANUAL -->
+<!-- FORMULARIO -->
 <div class="card">
 <h2>🛺 Reserva manual</h2>
 
@@ -93,8 +93,19 @@ button:hover{background:#900;}
 <input id="destinoTxt" placeholder="Destino (escribe manual)">
 
 <!-- NUEVOS CAMPOS -->
-<input type="date" id="fecha">
-<input type="time" id="hora">
+<select id="pasajeros">
+  <option value="1">1 pasajero</option>
+  <option value="2">2 pasajeros</option>
+  <option value="3">3 pasajeros</option>
+  <option value="4">4 pasajeros</option>
+  <option value="5">5 pasajeros</option>
+  <option value="6">6 pasajeros (máx)</option>
+</select>
+
+<select id="pago">
+  <option value="Efectivo">Efectivo</option>
+  <option value="Transferencia">Transferencia</option>
+</select>
 
 <textarea id="detalle" placeholder="Detalles del viaje"></textarea>
 
@@ -113,7 +124,6 @@ let map = L.map('map').setView([45.5019,-73.5674],13);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
-// SOLO UBICACIÓN ACTUAL
 navigator.geolocation.getCurrentPosition(pos=>{
 let user = [pos.coords.latitude,pos.coords.longitude];
 map.setView(user,15);
@@ -123,15 +133,15 @@ L.marker(user).addTo(map)
 .openPopup();
 });
 
-// RESERVA SOLO MANUAL
+// RESERVA
 function reservar(){
 
 let n = document.getElementById("nombre").value;
 let t = document.getElementById("telefono").value;
 let o = document.getElementById("origenTxt").value;
 let d = document.getElementById("destinoTxt").value;
-let f = document.getElementById("fecha").value;
-let h = document.getElementById("hora").value;
+let p = document.getElementById("pasajeros").value;
+let pay = document.getElementById("pago").value;
 let det = document.getElementById("detalle").value;
 
 let msg =
@@ -139,8 +149,8 @@ let msg =
 👤 ${n}
 📞 ${t}
 📍 ${o} → ${d}
-📅 Fecha: ${f}
-⏰ Hora: ${h}
+👥 Pasajeros: ${p}
+💳 Pago: ${pay}
 📝 ${det}`;
 
 window.open("https://wa.me/5354632153?text="+encodeURIComponent(msg));
