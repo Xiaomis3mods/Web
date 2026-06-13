@@ -64,18 +64,6 @@ cursor:pointer;
 button:hover{background:#900;}
 
 #map{height:260px;border-radius:10px;margin-top:10px;}
-
-.badge{
-padding:5px 8px;
-border-radius:6px;
-color:white;
-font-size:11px;
-}
-
-.pendiente{background:orange;}
-.aceptado{background:blue;}
-.camino{background:green;}
-.finalizado{background:black;}
 </style>
 </head>
 
@@ -94,28 +82,20 @@ font-size:11px;
 <div id="map"></div>
 </div>
 
-<!-- RESERVA -->
+<!-- FORMULARIO 100% MANUAL -->
 <div class="card">
-<h2>🛺 Reserva</h2>
+<h2>🛺 Reserva manual</h2>
 
 <input id="nombre" placeholder="Nombre">
 <input id="telefono" placeholder="Teléfono">
 
-<input id="origenTxt" placeholder="Origen">
-<input id="destinoTxt" placeholder="Destino (selecciona en mapa)">
+<input id="origenTxt" placeholder="Origen (escribe manual)">
+<input id="destinoTxt" placeholder="Destino (escribe manual)">
 
 <textarea id="detalle" placeholder="Detalles del viaje"></textarea>
 
 <br>
 <button onclick="reservar()">📲 Solicitar viaje</button>
-</div>
-
-<!-- HISTORIAL -->
-<div class="card">
-<h2>📋 Historial</h2>
-<table width="100%">
-<tbody id="tabla"></tbody>
-</table>
 </div>
 
 </div>
@@ -124,76 +104,39 @@ font-size:11px;
 
 <script>
 
-let viajes = JSON.parse(localStorage.getItem("viajes")||"[]");
-
-// MAPA INICIAL
+// MAPA SOLO UBICACIÓN
 let map = L.map('map').setView([45.5019,-73.5674],13);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
-let marker = null;
-
-// SOLO UBICACIÓN ACTUAL
+// SOLO UBICACIÓN ACTUAL (NO CONECTA CON FORMULARIO)
 navigator.geolocation.getCurrentPosition(pos=>{
 let user = [pos.coords.latitude,pos.coords.longitude];
 map.setView(user,15);
 
-// SOLO UN MARCADOR DE UBICACIÓN
-marker = L.marker(user).addTo(map)
-.bindPopup("Estás aquí").openPopup();
-
-document.getElementById("origenTxt").value =
-`${user[0].toFixed(5)}, ${user[1].toFixed(5)}`;
+L.marker(user).addTo(map)
+.bindPopup("Estás aquí")
+.openPopup();
 });
 
-// DESTINO SOLO SE GUARDA EN FORMULARIO (NO MAPA)
-map.on("click",e=>{
-document.getElementById("destinoTxt").value =
-`${e.latlng.lat.toFixed(5)}, ${e.latlng.lng.toFixed(5)}`;
-});
-
-// RESERVA
+// RESERVA SOLO MANUAL
 function reservar(){
 
-let v={
-n:document.getElementById("nombre").value,
-t:document.getElementById("telefono").value,
-o:document.getElementById("origenTxt").value,
-d:document.getElementById("destinoTxt").value,
-detalle:document.getElementById("detalle").value,
-estado:"pendiente"
-};
-
-viajes.push(v);
-localStorage.setItem("viajes",JSON.stringify(viajes));
-render();
+let n = document.getElementById("nombre").value;
+let t = document.getElementById("telefono").value;
+let o = document.getElementById("origenTxt").value;
+let d = document.getElementById("destinoTxt").value;
+let det = document.getElementById("detalle").value;
 
 let msg =
 `🛺 Triciclos L&L
-👤 ${v.n}
-📞 ${v.t}
-📍 ${v.o} → ${v.d}
-📝 ${v.detalle}`;
+👤 ${n}
+📞 ${t}
+📍 ${o} → ${d}
+📝 ${det}`;
 
 window.open("https://wa.me/5354632153?text="+encodeURIComponent(msg));
 }
-
-// HISTORIAL
-function render(){
-let tb=document.getElementById("tabla");
-tb.innerHTML="";
-
-viajes.forEach(v=>{
-tb.innerHTML+=`
-<tr>
-<td>${v.n}</td>
-<td>${v.o} → ${v.d}</td>
-<td><span class="badge ${v.estado}">${v.estado}</span></td>
-</tr>`;
-});
-}
-
-render();
 
 </script>
 
